@@ -2,6 +2,6 @@ package pizza;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Bonjour Hélène :)");
+		System.out.println("Bonjour Nicolas, as-tu un problÃ¨me d'accents :)");
 	}
 }
