@@ -8,7 +8,7 @@ import problem.Input;
 
 public class Main {
 
-	private static final String FILE_NAME = "toto.input";
+	private static final String FILE_NAME = "a_example.in";
 	private static final String OUTPUT_FILE_NAME = "banane.txt";
 
 	public static void main(final String[] args) throws URISyntaxException, IOException {
