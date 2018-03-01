@@ -53,13 +53,14 @@ public class FileManager {
 		return input.get();
 	}
 
+	int i;
 	public void writeOutput(String outputFileName, Output output) throws IOException {
 		Path file = Paths.get(outputFileName);
 		
-		final int i = 1;
+		i=0;
 		
 		List<String> linesToWrite = output.getOutput().stream()
-				.map(intList -> this.formatLine(intList, i))
+				.map(intList -> this.formatLine(intList, i++))
 				.collect(Collectors.toList());
 		
 		Files.write(file, linesToWrite, Charset.forName("UTF-8"));
@@ -72,7 +73,6 @@ public class FileManager {
 			line = line + intList.get(j) + " ";
 		}
 		
-		i++;
 		return line;
 	}
 
