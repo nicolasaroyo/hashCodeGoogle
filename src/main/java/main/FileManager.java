@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,8 +24,8 @@ public class FileManager {
 	private MapperInitLine mapperInitLine = new MapperInitLine();
 	private MapperRides mapperRides = new MapperRides();	
 	
-	private static List<String> read(String inputName) {
-		Path file = Paths.get(inputName);
+	private List<String> read(String inputName) throws URISyntaxException {		
+		Path file = Paths.get(this.getClass().getResource(inputName).toURI());
 		List<String> input = null;
 		try {
 			input = Files.lines(file).collect(Collectors.toList());
@@ -52,7 +54,9 @@ public class FileManager {
 	}
 
 	public void writeOutput(String outputFileName, Output output) {
-		// TODO Auto-generated method stub
+		Path file = Paths.get(outputFileName);
+		
+		//Files.write(file, output, Charset.forName("UTF-8"));
 		
 	}
 
