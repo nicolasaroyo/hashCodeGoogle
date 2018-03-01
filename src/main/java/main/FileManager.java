@@ -53,11 +53,27 @@ public class FileManager {
 		return input.get();
 	}
 
-	public void writeOutput(String outputFileName, Output output) {
+	public void writeOutput(String outputFileName, Output output) throws IOException {
 		Path file = Paths.get(outputFileName);
 		
-		//Files.write(file, output, Charset.forName("UTF-8"));
+		final int i = 1;
 		
+		List<String> linesToWrite = output.getOutput().stream()
+				.map(intList -> this.formatLine(intList, i))
+				.collect(Collectors.toList());
+		
+		Files.write(file, linesToWrite, Charset.forName("UTF-8"));
+	}
+	
+	private String formatLine(List<Integer> intList, int i) {
+		String line = i + " ";
+		
+		for(int j = 0; j < intList.size(); j++) {
+			line = line + intList.get(j) + " ";
+		}
+		
+		i++;
+		return line;
 	}
 
 }
