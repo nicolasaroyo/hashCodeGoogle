@@ -7,6 +7,7 @@ import problem.Input;
 public class Main {
 
 	private static final String FILE_NAME = "toto.input";
+	private static final String OUTPUT_FILE_NAME = "banane.txt";
 
 	public static void main(final String[] args) {
 		final FileManager fm = new FileManager();
@@ -17,6 +18,7 @@ public class Main {
 		// FAIRE NOTRE ALGO
 
 		// FAIRE L'OUTPUT
-
+		final Output output = new Output();
+		fm.writeOutput(OUTPUT_FILE_NAME, output);
 	}
 }
