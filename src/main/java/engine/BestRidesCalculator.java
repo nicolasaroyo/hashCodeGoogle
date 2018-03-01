@@ -12,12 +12,12 @@ import problem.Ride;
 
 public class BestRidesCalculator {
 
-	private static final int NB_RANDOM_ENGINES = 10;
+	private static final int NB_RANDOM_ENGINES = 1000;
 
 	public Output calculateBestOutput(final Input input) {
 		final List<Engine> engines = this.getEnginesToTry();
 
-		int bestScore = 0;
+		int bestScore = -1;
 		Output bestOutput = null;
 
 		for (final Engine engine : engines) {
@@ -33,7 +33,7 @@ public class BestRidesCalculator {
 		return bestOutput;
 	}
 
-	private int calculateScore(final Output output, final Input input) {
+	public int calculateScore(final Output output, final Input input) {
 		final List<List<Integer>> vehicles = output.getOutput();
 		return vehicles.stream().mapToInt(v -> this.calculateScoreVehicle(v, input)).sum();
 	}
@@ -53,8 +53,8 @@ public class BestRidesCalculator {
 				step = ride.getEarliestStart();
 				score += input.getBonusForStartingTime();
 			}
-			final int distanceToFinish = Math.abs(ride.getStart().getColumn() - vehicleColumn)
-					+ Math.abs(ride.getStart().getRow() - vehicleRow);
+			final int distanceToFinish = Math.abs(ride.getFinish().getColumn() - vehicleColumn)
+					+ Math.abs(ride.getFinish().getRow() - vehicleRow);
 			step += distanceToFinish;
 			if (step <= ride.getLatestFinish()) {
 				score += distanceToFinish;
